@@ -26,10 +26,16 @@ const toggleSidebar = () => {
     <Head :title="title" />
 
     <div class="flex h-screen overflow-y-hidden">
-        <sidebar />
+        <sidebar
+            @toggle-sidebar="toggleSidebar"
+            :isSidebarOpen="isSidebarOpen"
+        />
 
         <div class="flex flex-col flex-1 h-full overflow-hidden">
-            <Navbar />
+            <Navbar
+                @toggle-sidebar="toggleSidebar"
+                :isSidebarOpen="isSidebarOpen"
+            />
 
             <main
                 class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll"
