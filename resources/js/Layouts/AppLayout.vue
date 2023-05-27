@@ -25,25 +25,34 @@ const toggleSidebar = () => {
 <template>
     <Head :title="title" />
 
-    <div class="flex h-screen overflow-y-hidden">
-        <sidebar
-            @toggle-sidebar="toggleSidebar"
-            :isSidebarOpen="isSidebarOpen"
-        />
+    <div id="root">
+        <div class="flex flex-auto flex-col">
+            <div class="flex flex-auto min-w-0">
+                <Sidebar
+                    @toggle-sidebar="toggleSidebar"
+                    :isSidebarOpen="isSidebarOpen"
+                />
 
-        <div class="flex flex-col flex-1 h-full overflow-hidden">
-            <Navbar
-                @toggle-sidebar="toggleSidebar"
-                :isSidebarOpen="isSidebarOpen"
-            />
+                <div
+                    class="flex flex-col flex-auto min-h-screen min-w-0 relative w-full bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700"
+                >
+                    <Navbar
+                        @toggle-sidebar="toggleSidebar"
+                        :isSidebarOpen="isSidebarOpen"
+                    />
 
-            <main
-                class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll"
-            >
-                <slot />
-            </main>
-
-            <Footer />
+                    <div class="h-full flex flex-auto flex-col justify-between">
+                        <main class="h-full">
+                            <div
+                                class="page-container relative h-full flex flex-auto flex-col px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:px-8"
+                            >
+                                <slot />
+                            </div>
+                        </main>
+                        <Footer />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

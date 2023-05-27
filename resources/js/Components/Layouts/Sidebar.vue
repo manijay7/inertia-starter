@@ -16,30 +16,19 @@ const emit = defineEmits(["toggle-sidebar"]);
 
 <template>
     <aside
-        class="fixed inset-y-0 z-10 flex flex-col flex-shrink-0 w-64 max-h-screen overflow-hidden transition-all transform duration-300 border-r shadow-lg lg:z-auto lg:static lg:shadow-none"
+        class="flex-col flex-1 flex-shrink-0 bg-slate-800 dark:bg-slate-900 lg:flex transition-all duration-200 ease-in-out z-20 h-screen sticky top-0"
+        style="width: 250px; min-width: 250px"
         :class="{
-            ' -translate-x-full lg:translate-x-0': !props.isSidebarOpen,
+            '  hidden': !props.isSidebarOpen,
         }"
     >
-        <!-- sidebar header -->
-        <div
-            class="flex h-14 border-b border-solid border-gray-300 items-center justify-between flex-shrink-0 p-2"
-        >
-            <div class="flex items-center justify-start space-x-2">
-                <a href="#" title="home">
-                    <img
-                        :src="'../storage/pbl_logo.png'"
-                        class="w-[100%] bg-white"
-                        alt="logo"
-                    />
-                </a>
-                <h2
-                    class="flex-1 text-gray-700 dark:text-gray-100 text-base font-medium"
-                >
-                    {{ $page.props.app.name }}
-                </h2>
+        <div class="flex items-baseline justify-between">
+            <div class="px-6 pt-5" style="width: auto">
+                <img
+                    src="/images/logo/logo-no-background.png"
+                    alt="Ekklesia logo"
+                />
             </div>
-
             <button
                 @click="$emit('toggle-sidebar')"
                 class="p-2 rounded-md lg:hidden"
@@ -60,43 +49,34 @@ const emit = defineEmits(["toggle-sidebar"]);
                 </svg>
             </button>
         </div>
-
-        <!-- sidebar items -->
         <div
-            class="relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-r border-gray-200 dark:border-gray-700"
+            class="sidebar-small-overflow h-full overflow-y-auto scrollbars show"
         >
-            <!-- sidebar top -->
-            <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
-                <div
-                    class="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:divide-gray-700"
-                >
-                    <div class="pt-2 space-y-2">
-                        <SidebarLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
-                        >
-                            <i
-                                class="pi pi-chart-bar"
-                                style="color: slateblue"
-                            ></i>
+            <div class="w-full flex flex-row justify-center py-5"></div>
 
-                            <span class="font-medium">Dashboard</span>
-                        </SidebarLink>
-                    </div>
-                </div>
-            </div>
-
-            <!-- sibebar bottom -->
-            <div
-                class="absolute bottom-0 left-0 h-12 justify-start hidden w-full p-2 border-t border-b-slate-400 space-x-4 lg:flex"
-                sidebar-bottom-menu
+            <!-- Sidebar menu -->
+            <ul
+                class="sidebar-small-menu w-full float-none flex flex-col font-medium px-1 pb-6 space-y-2"
             >
-                <SidebarLink href="#" :active="route().current('settings')">
-                    <i class="pi pi-cog" style="color: slateblue"></i>
+                <SidebarLink
+                    :href="route('dashboard')"
+                    :active="route().current('dashboard')"
+                >
+                    <i class="pi pi-chart-bar" style="color: slateblue"></i>
 
-                    <span class="font-medium">Settings</span>
+                    <span class="font-medium">Dashboard</span>
                 </SidebarLink>
-            </div>
+
+                <li class="relative">
+                    <a
+                        class="block py-2.5 px-6 rounded hover:bg-slate-700 hover:text-cyan-500"
+                        href="documentation.html"
+                    >
+                        <i class="sidebar-small-icon bx bx-file-find mr-1"></i>
+                        <span class="sidebar-small-text">Documentation</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </aside>
 </template>

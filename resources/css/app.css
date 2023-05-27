@@ -3,18 +3,13 @@
 @tailwind utilities;
 
 /* :root {
-    --surface-ground: #fdfdfd;
+    --surface-ground: #dadada;
   } */
 
-
-html {
-    font-size: 14px;
-}
-
-body {
+/* body {
     font-family: var(--font-family);
     font-weight: normal;
-    background: #fdfdfd;
+    background: var(--surface-ground);
     color: var(--text-color);
 
     -webkit-font-smoothing: antialiased;
@@ -26,4 +21,4 @@ body {
     padding: 2rem;
     border-radius: 10px;
     margin-bottom: 1rem;
-}
+} */
