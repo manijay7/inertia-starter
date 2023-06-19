@@ -20,7 +20,7 @@ const emit = defineEmits(["toggle-sidebar"]);
 
 <template>
     <header
-        class="bg-white flex sticky top-0 w-full z-30 border-b border-gray-200 dark:border-gray-700"
+        class="bg-white dark:bg-black flex sticky top-0 w-full z-30 border-b border-gray-200 dark:border-gray-700"
     >
         <div class="flex justify-between px-4 relative w-full h-16">
             <div class="flex items-center justify-start">

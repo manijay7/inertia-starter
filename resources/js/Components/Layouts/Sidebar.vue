@@ -16,14 +16,17 @@ const emit = defineEmits(["toggle-sidebar"]);
 
 <template>
     <aside
-        class="flex-col flex-1 flex-shrink-0 lg:flex transition-all duration-200 ease-in-out z-20 h-screen sticky top-0"
+        class="bg-tertiary-900 text-gray-300 flex-col flex-1 flex-shrink-0 lg:flex transition-all duration-200 ease-in-out z-20 h-screen sticky top-0"
         style="width: 290px; min-width: 290px"
         :class="{
             '  hidden': !props.isSidebarOpen,
         }"
     >
         <div class="flex items-baseline justify-between">
-            <div class="px-6 pt-5" style="width: auto">
+            <div
+                class="px-6 pt-5 h-16 min-w-full border-b border-b-tertiary-50 shadow-md bg-tertiary-900/50"
+                style="width: auto"
+            >
                 <img
                     src="/images/logo/logo-no-background.png"
                     alt="Ekklesia logo"
