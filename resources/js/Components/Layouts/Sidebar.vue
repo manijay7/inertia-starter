@@ -16,8 +16,8 @@ const emit = defineEmits(["toggle-sidebar"]);
 
 <template>
     <aside
-        class="bg-tertiary-900 text-gray-300 flex-col flex-1 flex-shrink-0 lg:flex transition-all duration-200 ease-in-out z-20 h-screen sticky top-0"
-        style="width: 290px; min-width: 290px"
+        class="bg-white dark:bg-slate-800 text-gray-300 flex-col flex-1 flex-shrink-0 lg:flex transition-all duration-200 ease-in-out z-20 h-screen sticky top-0"
+        style="width: 248px; min-width: 248px"
         :class="{
             '  hidden': !props.isSidebarOpen,
         }"

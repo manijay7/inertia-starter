@@ -2,23 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-    --surface-ground: #dadada;
-  } */
-
-/* body {
-    font-family: var(--font-family);
-    font-weight: normal;
-    background: var(--surface-ground);
-    color: var(--text-color);
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+@layer base {
+    body {
+        @apply bg-slate-100  dark:text-slate-300 text-slate-600 font-normal;
+    }
 }
-
-.card {
-    background: var(--surface-card);
-    padding: 2rem;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-} */

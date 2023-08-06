@@ -17,8 +17,7 @@
     @inertiaHead
 </head>
 
-<body
-    class="bg-slate-100 dark:bg-slate-900 text-gray-500 dark:text-gray-400 text-sm md:text-base leading-5 md:leading-6">
+<body class=" md:text-base leading-5 md:leading-6">
     @inertia
 </body>
 
