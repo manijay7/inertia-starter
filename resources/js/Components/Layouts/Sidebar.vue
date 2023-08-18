@@ -1,5 +1,9 @@
 <script setup>
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+
 import SidebarLink from "@/Components/SidebarLink.vue";
+import Icon from "@/Components/Icon.vue";
 
 const logout = () => {
     router.post(route("logout"));
@@ -10,6 +14,27 @@ const props = defineProps({
         type: Boolean,
     },
 });
+
+const navItems = [
+    {
+        href: "dashboard",
+        label: "home",
+        icon: "heroicons-outline:home",
+        children: [],
+    },
+    {
+        label: "settings",
+        icon: "heroicons-outline:mail",
+        children: [
+            {
+                href: "login",
+                label: "Login",
+                children: [],
+                icon: "heroicons-outline:home",
+            },
+        ],
+    },
+];
 
 const emit = defineEmits(["toggle-sidebar"]);
 </script>
@@ -52,32 +77,17 @@ const emit = defineEmits(["toggle-sidebar"]);
                 </svg>
             </button>
         </div>
-        <div
-            class="sidebar-small-overflow h-full overflow-y-auto scrollbars show"
-        >
+        <div class="h-full overflow-y-auto">
             <div class="w-full flex flex-row justify-center py-5"></div>
 
             <!-- Sidebar menu -->
-            <ul
-                class="sidebar-small-menu w-full float-none flex flex-col font-medium px-1 pb-6 space-y-2"
-            >
-                <SidebarLink
-                    :href="route('dashboard')"
-                    :active="route().current('dashboard')"
+            <ul class="font-medium text-base">
+                <li
+                    v-for="item in navItems"
+                    :key="item"
+                    class="relative pointer"
                 >
-                    <i class="pi pi-chart-bar" style="color: slateblue"></i>
-
-                    <span class="font-medium">Dashboard</span>
-                </SidebarLink>
-
-                <li class="relative">
-                    <a
-                        class="block py-2.5 px-6 rounded hover:bg-slate-700 hover:text-cyan-500"
-                        href="documentation.html"
-                    >
-                        <i class="sidebar-small-icon bx bx-file-find mr-1"></i>
-                        <span class="sidebar-small-text">Documentation</span>
-                    </a>
+                    <SidebarLink :item="item" />
                 </li>
             </ul>
         </div>
